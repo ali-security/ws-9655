@@ -24,23 +24,23 @@ jobs:
           - 22
         os:
           - macOS-latest
-          - ubuntu-latest
-          - windows-latest
+          - ubuntu-24.04
+          - windows-2022
         exclude:
           - arch: x86
             os: macOS-latest
           - arch: x86
-            os: ubuntu-latest
+            os: ubuntu-24.04
           - arch: x86
             node: 18
-            os: windows-latest
+            os: windows-2022
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node }}
           architecture: ${{ matrix.arch }}
-          cache: 'npm'
+          cache: npm
           cache-dependency-path: ./package.json
       - run: npm install
       - run: npm test
